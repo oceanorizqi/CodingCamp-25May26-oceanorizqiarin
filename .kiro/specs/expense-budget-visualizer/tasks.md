@@ -109,7 +109,7 @@ Implement a single-page, client-side expense tracker using plain HTML, CSS, and 
     - **Validates: Requirements 2.4**
 
 - [ ] 7. Implement ChartRenderer
-  - [~] 7.1 Implement pie chart drawing on canvas
+  - [ ] 7.1 Implement pie chart drawing on canvas
     - Implement `ChartRenderer.draw(canvas, categoryTotals)` using the 2D Context API
     - Draw proportional slices from a fixed palette of ≥12 distinct colors (cycling if needed)
     - Draw labels inside or adjacent to each slice showing category name and percentage
@@ -118,7 +118,7 @@ Implement a single-page, client-side expense tracker using plain HTML, CSS, and 
     - _Requirements: 7.1, 7.4, 7.5_
 
 - [ ] 8. Implement UIRenderer
-  - [~] 8.1 Implement transaction list and balance rendering
+  - [ ] 8.1 Implement transaction list and balance rendering
     - Implement `renderTransactionList(transactions)` — clear and rebuild list DOM; show empty state message when list is empty; each entry shows name, amount (2 decimal places), category, and a delete button with class `delete-btn`
     - Implement `renderBalance(total)` — update balance text formatted as `$X.XX`
     - _Requirements: 3.1, 3.2, 3.4, 4.1, 5.1, 5.6_
@@ -131,21 +131,21 @@ Implement a single-page, client-side expense tracker using plain HTML, CSS, and 
     - **Property 9: Every Transaction Entry Has a Delete Control**
     - **Validates: Requirements 4.1**
 
-  - [~] 8.4 Implement monthly summary, category selector, chart, and theme rendering
+  - [ ] 8.4 Implement monthly summary, category selector, chart, and theme rendering
     - Implement `renderMonthlySummary(transactions, month)` — display monthly total and filtered list; show empty state when no transactions match
     - Implement `renderCategorySelector(categories)` — rebuild `<select>` options from `state.categories`
     - Implement `renderChart(transactions)` — compute `getCategoryTotals`, call `ChartRenderer.draw`
     - Implement `applyTheme(theme)` — set `data-theme` attribute on `<html>`
     - _Requirements: 7.2, 7.3, 8.2, 9.3, 9.4, 9.6_
 
-  - [~] 8.5 Implement error and notification rendering
+  - [ ] 8.5 Implement error and notification rendering
     - Implement `showError(field, message)` — display inline validation error adjacent to the field
     - Implement `clearErrors()` — remove all inline error elements
     - Implement `showToast(message, type)` — render non-blocking toast notification (`'warning'` | `'error'`); auto-dismiss after a short delay
     - _Requirements: 1.4, 1.5, 2.3, 2.4, 10.4, 10.5, 10.6_
 
 - [ ] 9. Implement StorageService load-from-storage round-trip and error paths
-  - [~] 9.1 Write property test for load from storage round-trip (Property 18)
+  - [ ] 9.1 Write property test for load from storage round-trip (Property 18)
     - **Property 18: Load From Storage Round-Trip**
     - **Validates: Requirements 3.3, 10.3**
 
@@ -156,7 +156,7 @@ Implement a single-page, client-side expense tracker using plain HTML, CSS, and 
     - Test: storage unavailable on delete → in-memory removal + toast shown (Req 4.4)
 
 - [ ] 10. Implement EventHandlers and init
-  - [~] 10.1 Wire all event handlers and bootstrap the app
+  - [ ] 10.1 Wire all event handlers and bootstrap the app
     - Register `submit` on `#transaction-form`: call `clearErrors`, `validate`, show errors or call `add`, then `renderTransactionList`, `renderBalance`, `renderChart`, reset form (Req 1.3, 1.4, 1.5, 1.6)
     - Register `submit` on `#category-form`: call `addCategory`, show error or call `renderCategorySelector` (Req 2.2, 2.3, 2.4)
     - Register delegated `click` on transaction list for `.delete-btn`: call `delete`, then `renderTransactionList`, `renderBalance`, `renderChart` (Req 4.2, 4.3)
@@ -179,13 +179,13 @@ Implement a single-page, client-side expense tracker using plain HTML, CSS, and 
     - Test: storage unavailable on load → light mode default (Req 8.5)
 
 - [ ] 11. Implement CSS theming and responsive layout
-  - [~] 11.1 Implement dark/light theme via CSS custom properties
+  - [ ] 11.1 Implement dark/light theme via CSS custom properties
     - Define `[data-theme="light"]` and `[data-theme="dark"]` variable sets in `styles.css`
     - Style all UI regions (form, list, balance, chart container, summary, toggle) using only the custom properties
     - Ensure the transaction list container has `overflow-y: auto` for scrollability
     - _Requirements: 3.2, 8.1, 8.2, 11.1, 11.3_
 
-- [~] 12. Final checkpoint — Ensure all tests pass
+- [ ] 12. Final checkpoint — Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes
