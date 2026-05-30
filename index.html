@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense &amp; Budget Visualizer</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <!-- ===== Header ===== -->
+      <header class="app-header">
+        <h1 class="app-title">Expense &amp; Budget Visualizer</h1>
+        <button
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle dark/light mode"
+        >
+          Toggle Theme
+        </button>
+      </header>
+
+      <!-- ===== Main layout ===== -->
+      <main class="app-main">
+        <!-- ===== Left column: forms + controls ===== -->
+        <section class="panel panel--forms" aria-label="Input forms">
+          <!-- Transaction form -->
+          <div class="card">
+            <h2 class="card__title">Add Transaction</h2>
+            <form id="transaction-form" novalidate>
+              <div class="form-group">
+                <label for="item-name">Item Name</label>
+                <input
+                  type="text"
+                  id="item-name"
+                  name="item-name"
+                  maxlength="100"
+                  placeholder="e.g. Grocery run"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="amount">Amount ($)</label>
+                <input
+                  type="number"
+                  id="amount"
+                  name="amount"
+                  min="0.01"
+                  max="999999999.99"
+                  step="0.01"
+                  placeholder="0.00"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="category-select">Category</label>
+                <select id="category-select" name="category" required>
+                  <option value="Food">Food</option>
+                  <option value="Transport">Transport</option>
+                  <option value="Fun">Fun</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn--primary">
+                Add Transaction
+              </button>
+            </form>
+          </div>
+
+          <!-- Custom category form -->
+          <div class="card">
+            <h2 class="card__title">Add Custom Category</h2>
+            <form id="category-form" novalidate>
+              <div class="form-group">
+                <label for="custom-category-input">Category Name</label>
+                <input
+                  type="text"
+                  id="custom-category-input"
+                  name="custom-category"
+                  maxlength="50"
+                  placeholder="e.g. Healthcare"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn--secondary">
+                Add Category
+              </button>
+            </form>
+          </div>
+
+          <!-- Sort and filter controls -->
+          <div class="card">
+            <h2 class="card__title">Sort &amp; Filter</h2>
+
+            <div class="form-group">
+              <label for="sort-select">Sort By</label>
+              <select id="sort-select" name="sort">
+                <option value="none">None</option>
+                <option value="amount-asc">Amount Ascending</option>
+                <option value="amount-desc">Amount Descending</option>
+                <option value="category-az">Category A→Z</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="month-select">Filter by Month</label>
+              <input type="month" id="month-select" name="month-select" />
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== Right column: balance, chart, list, summary ===== -->
+        <section class="panel panel--data" aria-label="Spending data">
+          <!-- Balance display -->
+          <div class="card card--balance">
+            <h2 class="card__title">Total Balance</h2>
+            <p id="balance-display" class="balance-amount" aria-live="polite">
+              $0.00
+            </p>
+          </div>
+
+          <!-- Spending chart -->
+          <div class="card card--chart">
+            <h2 class="card__title">Spending by Category</h2>
+            <div class="chart-container">
+              <canvas
+                id="spending-chart"
+                width="300"
+                height="300"
+                aria-label="Spending distribution pie chart"
+                role="img"
+              ></canvas>
+            </div>
+          </div>
+
+          <!-- Monthly summary -->
+          <section
+            id="monthly-summary"
+            class="card card--summary"
+            aria-label="Monthly summary"
+            aria-live="polite"
+          >
+            <h2 class="card__title">Monthly Summary</h2>
+            <p class="monthly-total">Select a month to view its summary.</p>
+          </section>
+
+          <!-- Transaction list -->
+          <div class="card card--list">
+            <h2 class="card__title">Transactions</h2>
+            <ul
+              id="transaction-list"
+              class="transaction-list"
+              aria-label="Transaction list"
+              aria-live="polite"
+            >
+              <li class="transaction-list__empty">
+                No transactions recorded yet.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <!-- Toast notification container (populated by JS) -->
+      <div
+        id="toast-container"
+        class="toast-container"
+        aria-live="assertive"
+        aria-atomic="true"
+      ></div>
+    </div>
+    <!-- /.app-wrapper -->
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
